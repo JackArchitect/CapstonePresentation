@@ -2,6 +2,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    // Hilt
+    alias(libs.plugins.hilt.android)
+    // alias(libs.plugins.kotlin.kapt) Somehow the version is not as same as kotlin
+    kotlin("kapt")
 }
 
 android {
@@ -41,9 +46,18 @@ android {
 
 dependencies {
 
+    // navigation
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.compose)
+
+    // lifecycle
+    implementation (libs.lifecycle.viewmodel.ktx)
+    implementation (libs.lifecycle.livedata.ktx)
+
+    // Hilt
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
