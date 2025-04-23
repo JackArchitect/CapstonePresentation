@@ -1,4 +1,4 @@
-package com.example.capstonepresentation.screens.Home
+package com.example.capstonepresentation.fragments.Home
 
 import androidx.lifecycle.AndroidViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

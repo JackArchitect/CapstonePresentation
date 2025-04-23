@@ -1,4 +1,4 @@
-package com.example.capstonepresentation.screens.Second
+package com.example.capstonepresentation.fragments.Second
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

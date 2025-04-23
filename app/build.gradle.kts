@@ -54,6 +54,7 @@ dependencies {
     // lifecycle
     implementation (libs.lifecycle.viewmodel.ktx)
     implementation (libs.lifecycle.livedata.ktx)
+    implementation (libs.lifecycle.runtime.ktx)
 
     // Hilt
     implementation (libs.hilt.android)
