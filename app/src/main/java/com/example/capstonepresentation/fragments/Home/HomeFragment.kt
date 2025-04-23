@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                bluetoothRepository.power.collect {powerValue ->
+                BluetoothRepository.power.collect {powerValue ->
                     viewModel.updatePower(powerValue)}
             }
         }

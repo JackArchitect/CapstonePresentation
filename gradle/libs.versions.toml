@@ -11,6 +11,7 @@ composeBom = "2024.09.00"
 navVersion = "2.8.7"
 hilt = "2.51"
 coroutines = "1.8.0"
+nordic = "2.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +46,9 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 # Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
+# Nordic
+nordic-ble = { group = "no.nordicsemi.android", name = "ble-ktx", version.ref = "nordic" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
