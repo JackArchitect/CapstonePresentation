@@ -1,7 +1,5 @@
 package com.example.capstonepresentation.repository
 
-import kotlinx.coroutines.flow.Flow
-
 //data class BluetoothData(
 //    val timestamp: String,
 //    val toque: Float,
