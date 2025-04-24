@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 import no.nordicsemi.android.ble.BleManager
 import no.nordicsemi.android.ble.ktx.state.ConnectionState
 import no.nordicsemi.android.ble.ktx.suspend
-import javax.inject.Inject
+// import javax.inject.Inject
 import javax.inject.Singleton
 import com.example.capstonepresentation.bluetooth.NordicBleManager
 

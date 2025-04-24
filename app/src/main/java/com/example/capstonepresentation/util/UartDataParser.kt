@@ -44,5 +44,4 @@ class UartDataParser {
                 abs(data.power) < 2000f &&
                 data.rawData.isNotEmpty()
     }
-
 }

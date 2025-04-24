@@ -1,5 +1,6 @@
 package com.example.capstonepresentation.bluetooth
 
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -14,6 +15,7 @@ import javax.inject.Singleton
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import com.example.capstonepresentation.bluetooth.BluetoothConstants
+import java.util.Optional
 import java.util.UUID
 
 @Singleton
@@ -33,12 +35,11 @@ class NordicBleManager @Inject constructor(
     val rawData: SharedFlow<ByteArray> = _rawData
 
     override fun getGattCallback(): BleManagerGattCallback {
-        return object : BleManagerGattCallback() {
-            return if (targetServiceUuid != null && targetCharUuid != null) {
-                createStaticUuidCallback()
-            } else {
-                createDynamicDiscoveryCallback()
-            }
+        return if (targetServiceUuid != null && targetCharUuid != null) {
+            createStaticUuidCallback()
+        } else {
+            createDynamicDiscoveryCallback()
+        }
 //            override fun initialize() {
 //
 //                setNotificationCallback(uartCharacteristic)
@@ -46,24 +47,25 @@ class NordicBleManager @Inject constructor(
 //                        _rawData.tryEmit(data.value)
 //                    }
 //            }
-        }
     }
 
     private fun createStaticUuidCallback() : BleManagerGattCallback {
         return object : BleManagerGattCallback() {
-            override fun initialize(targetCharUuid!!)
-                .with { _, data -> _rawData.tryEmit(data.value)
+            override fun initialize() {
+                setNotificationCallback(targetCharUuid!!)
+                    .with { _, data -> _rawData.tryEmit(data.value)}
             }
-
-            writeCharacteristic(BluetoothConstants.UART_TX_)
-
+//            writeCharacteristic(
+//                BluetoothConstants.UART_TX_CHAR_UUID,
+//                "INIT".toByteArray()
+//            ).enqueue()
         }
     }
 
     private fun createDynamicDiscoveryCallback() : BleManagerGattCallback {
         return object : BleManagerGattCallback() {
-            override fun isRequiredServiceSupported(gatt: BluetoothGatt): Boolean {
-                TODO("Not yet implemented")
+            override fun onServicesDiscovered(device: BluetoothDevice, optional: Boolean) {
+                getService()
             }
 
             override fun onServicesInvalidated() {
